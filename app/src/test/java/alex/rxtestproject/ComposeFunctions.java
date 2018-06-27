@@ -16,6 +16,12 @@ import io.reactivex.schedulers.TestScheduler;
 public class ComposeFunctions {
 
     @Test
+    public void groupByTest() {
+        Observable.range(0,20).groupBy(val -> val % 2).flatMapSingle(Observable::toList)
+                .subscribe(list -> System.out.println("first " + list.get(0) + " size " + list.size()));
+    }
+
+    @Test
     public void flatMap() {
         final List<String> items = Arrays.asList("a", "b", "c", "d", "e", "f");
 
